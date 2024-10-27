@@ -7,6 +7,11 @@
 body{
     font-family: 'Inter', sans-serif;
 }
+
 .bgLeft{
     background: url("../public/left.png") no-repeat 30% 90% #2D29D7;
+}
+
+.errorText {
+    @apply text-red-500 text-[12px];
 }

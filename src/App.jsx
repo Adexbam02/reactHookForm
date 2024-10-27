@@ -1,6 +1,17 @@
 import { Left } from "./component/Left";
+import { useForm } from "react-hook-form";
 
 export default function App() {
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm();
+
+  const onSubmit = (data) => {
+    console.log(data);
+  };
+
   return (
     <header className="flex items-center justify-center m-[4%]">
       <div className="w-[70%] h-[80vh] bg-black flex items-center justify-center">
@@ -16,33 +27,67 @@ export default function App() {
             </p>
           </span>
 
-          <form action="" className="flex flex-col items-start gap-3 ">
+          <form
+            onSubmit={handleSubmit(onSubmit)}
+            className="flex flex-col items-start gap-3"
+          >
             <span className="flex items-start justify-between gap-3">
-              <input
-                type="text"
-                placeholder="First name*"
-                className="outline-none border-[1px] border-[#E1E5EF] rounded-[6px] p-[12px] w-[50%]"
-              />
-              <input
-                type="text"
-                placeholder="Last name*"
-                className="outline-none border-[1px] border-[#E1E5EF] rounded-[6px] p-[12px] w-[50%]"
-              />
+              <span className="flex flex-col items-start w-[100%]">
+                <input
+                  type="text"
+                  {...register("firstname", { required: true })}
+                  placeholder="First name*"
+                  className="outline-none border-[1px] border-[#E1E5EF] rounded-[6px] p-[12px] w-[100%]"
+                />
+                {errors.firstname && (
+                  <span className="errorText">First name is required</span>
+                )}
+              </span>
+
+              <span className="flex flex-col items-start w-[100%]">
+                <input
+                  type="text"
+                  {...register("lastname", { required: true })}
+                  placeholder="Last name*"
+                  className="outline-none border-[1px] border-[#E1E5EF] rounded-[6px] p-[12px] w-[100%]"
+                />
+                {errors.lastname && (
+                  <span className="errorText">Last name is required</span>
+                )}
+              </span>
             </span>
-            <input
-              type="email"
-              name=""
-              placeholder="Email*"
-              id=""
-              className="outline-none border-[1px] w-[100%] border-[#E1E5EF] rounded-[6px] p-[12px]"
-            />
+            <span>
+              <input
+                type="email"
+                {...register("email", {
+                  required: true,
+                  pattern: /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/,
+                })}
+                placeholder="Email*"
+                className="outline-none border-[1px] w-[100%] border-[#E1E5EF] rounded-[6px] p-[12px]"
+              />
+              {errors.email && (
+                <span className="errorText">Valid email is required</span>
+              )}
+            </span>
+
             <input
               type="password"
-              name=""
+              {...register("password", {
+                required: true,
+                pattern:
+                  /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/,
+              })}
               placeholder="Password*"
-              id=""
-              className="outline-none border-[1px] w-[100%] border-[#E1E5EF] rounded-[6px] p-[12px] "
+              className="outline-none border-[1px] w-[100%] border-[#E1E5EF] rounded-[6px] p-[12px]"
             />
+            {errors.password && (
+              <span className="errorText">
+                Invalid Password, password must has at least one lowercase
+                letter, one uppercase letter, one digit, one spacial character
+                and at least 8 charcter long
+              </span>
+            )}
 
             <button
               type="submit"

@@ -10,9 +10,9 @@ export const Left = () => {
       </nav>
 
       <div className="px-[50px] flex flex-col items-start gap-3">
-        <h1 className="text-start text-[28px] font-extrabold leading-[1.5rem] text-white">
-          Detect more fraud. <br />{" "}
-          <span className="text-[#C698F6]">Prevent financial crime. </span>
+        <h1 className="text-start text-[28px] font-extrabold leading-[1.8rem] text-white">
+          Lorem ipsum dol amet. <br />{" "}
+          <span className="text-[#C698F6]">Lorem, ipsum dolor.. </span>
         </h1>
 
         <p className="text-[12.5px] leading-[18px] text-white font-normal">
@@ -34,15 +34,15 @@ export const Left = () => {
           <img src="/public/sign.svg" alt="" className="w-[30px]" />
 
           <p className="text-[12.5px] leading-[18px] text-white font-normal">
-            I&apos;ve worked in Fraud and AML for a long time, but I&apos;ve
-            never worked with a customer support team that&apos;s so accessible
-            and worked with a customer support team
+            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Facilis,
+            obcaecati hic. Autem nisi sunt dolorum quae voluptates pariatur a,
+            magnam necessitatibus nobis.
           </p>
 
           <span className="flex flex-col gap-[-20px] mt-[1rem]">
-            <small className="text-[#C698F6] font-bold">Preston Miller</small>
+            <small className="text-[#C698F6] font-bold">Howler Hota</small>
             <p className="text-white text-[12px]">
-              Manager, Fraud and Chargebacks
+              Manager, Tavdl
             </p>
           </span>
 

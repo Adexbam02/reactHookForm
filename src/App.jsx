@@ -5,11 +5,25 @@ export default function App() {
   const {
     register,
     handleSubmit,
-    formState: { errors },
-  } = useForm();
+    setError,
+    formState: { errors, isSubmitting },
+  } = useForm({
+    defaultValues: {
+      // default email alrady in the input field
+      // email: "nurain@gmail.com"
+    }
+  });
 
-  const onSubmit = (data) => {
-    console.log(data);
+  const onSubmit = async (data) => {
+    try {
+      await new Promise((resolve) => setTimeout(resolve, 1000));
+      console.log(data);
+      throw new Error();
+    } catch (error) {
+      setError("root", {
+        // message: "This email is already taken",
+      });
+    }
   };
 
   return (
@@ -23,7 +37,7 @@ export default function App() {
               Create an Account
             </h1>
             <p className="text-[#7E8DAA] text-[12px] mb-8">
-              Schedule a 30-minute product demo with our experts.
+              Lorem ipsum, dolor sit amet consectetur adipisicing.
             </p>
           </span>
 
@@ -91,10 +105,16 @@ export default function App() {
 
             <button
               type="submit"
+              disabled={isSubmitting}
               className="bg-[#2D29D7] rounded-[6px] py-[10px] px-[15px] text-white font-medium"
             >
-              Submit
+              {isSubmitting ? "Loading..." : "Submit"}
             </button>
+
+            {/* error on the whole field */}
+            {/* {errors.root && (
+              <span className="errorText">First name is required</span>
+            )} */}
           </form>
         </div>
       </div>
